@@ -1,0 +1,45 @@
+{
+  "name": "ostark/yii2-artisan-bridge",
+  "description": "Brings the ease of Artisan commands and the power of Symfony console to Yii2.",
+  "version": "0.1.0",
+  "type": "library",
+  "keywords": [
+    "craftcms",
+    "yii2",
+    "artisan",
+    "laravel",
+    "symfony",
+    "console"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Oliver Stark",
+      "homepage": "https://www.fortrabbit.com"
+    }
+  ],
+  "support": {
+    "email": "os@fortrabbit.com",
+    "issues": "https://github.com/ostark/yii2-artisan-bridge/issues",
+    "source": "https://github.com/ostark/yii2-artisan-bridge",
+    "docs": "https://github.com/ostark/yii2-artisan-bridge"
+  },
+  "require": {
+    "yiisoft/yii2": "^2.0",
+    "symfony/console": "^3.0 || ^4.0",
+    "symfony/process": "^3.0 || ^4.0"
+  },
+  "provide": {
+    "bower-asset/bootstrap": "3.3.* | 3.2.* | 3.1.*",
+    "bower-asset/jquery": "3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
+    "bower-asset/inputmask": "~3.2.2 | ~3.3.5",
+    "bower-asset/punycode": "1.3.*",
+    "bower-asset/yii2-pjax": "~2.0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "ostark\\Yii2ArtisanBridge\\": "src/"
+    }
+  }
+
+}
