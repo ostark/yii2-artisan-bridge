@@ -5,7 +5,8 @@ namespace ostark\Yii2ArtisanBridge\base;
 /**
  * Trait BlockOutputTrait
  *
- *
+ * @property \ostark\Yii2ArtisanBridge\ConsoleOutput $input
+ * @property \ostark\Yii2ArtisanBridge\OutputStyle  $output
  */
 trait BlockOutputTrait
 {

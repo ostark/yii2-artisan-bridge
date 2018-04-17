@@ -13,9 +13,26 @@ use yii\base\Arrayable;
 /**
  * Trait ArtisanOutputTrait
  *
+ * Borrowed from Illuminate\Console\Command
+ * @see https://github.com/laravel/framework/blob/5.6/src/Illuminate/Console/Command.php
+ *
+ * @property \ostark\Yii2ArtisanBridge\ConsoleOutput $input
+ * @property \ostark\Yii2ArtisanBridge\OutputStyle  $output
  */
 trait ArtisanOutputTrait
 {
+
+    /**
+     * Confirm a question with the user.
+     *
+     * @param  string  $question
+     * @param  bool    $default
+     * @return bool
+     */
+    public function confirm($question, $default = false)
+    {
+        return $this->output->confirm($question, $default);
+    }
 
     /**
      * Prompt the user for input.

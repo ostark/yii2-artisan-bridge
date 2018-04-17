@@ -5,9 +5,14 @@ use ostark\Yii2ArtisanBridge\OutputStyle;
 use Symfony\Component\Console\Input\ArgvInput;
 use yii\base\Action as YiiBaseAction;
 
+/**
+ * Class Action
+ *
+ * @package ostark\Yii2ArtisanBridge\base
+ *
+ */
 abstract class Action extends YiiBaseAction
 {
-
     /**
      * @var \ostark\Yii2ArtisanBridge\OutputStyle
      */
@@ -22,46 +27,20 @@ abstract class Action extends YiiBaseAction
     use ArtisanOutputTrait;
     use BlockOutputTrait;
 
-    public function init()
+    /**
+     * Action constructor.
+     *
+     * @param string               $id
+     * @param \yii\base\Controller $controller
+     * @param array                $config
+     */
+    public function __construct(string $id, \yii\base\Controller $controller, array $config = [])
     {
-        parent::init();
+        parent::__construct($id, $controller, $config);
 
         $this->input = new ArgvInput();
         $this->output = new OutputStyle($this->input, new ConsoleOutput());
 
-    }
-    /**
-     * @param $question
-     *
-     * @return bool
-     * @throws \yii\console\Exception
-     */
-    public function pleaseConfirm($question)
-    {
-        if ($this->getOption('force')) {
-            return true;
-        }
-        if ($this->controller->confirm(PHP_EOL . $question, true)) {
-            return true;
-        }
-
-        $this->block('Action was not executed.', 'error');
-
-        return false;
-    }
-
-    public function remotePreCheck()
-    {
-        $plugin = Plugin::getInstance();
-        try {
-            $plugin->ssh->checkPlugin();
-        } catch (CraftNotInstalledException $e) {
-            $this->error($e->getMessage());
-        } catch (PluginNotInstalledException $e) {
-            $this->error($e->getMessage());
-        } catch (RemoteException $e) {
-            $this->error($e->getMessage());
-        }
     }
 
 }
