@@ -49,7 +49,7 @@ class Plugin extends BasePlugin
 
 ### Write your Actions (Commands)
 
-You write one class per action. You actual instructions live in the `run()` method, similar to 
+You write one class per action. Your actual instructions live in the `run()` method, similar to 
 `execute()` in Symfony or `handle()` in Laravel. Command arguments map to the arguments of the `run()` method.
 
 Options and option aliases are registered in Commands::register($prefix, $actions, `$options`). To access an option, 
@@ -105,6 +105,8 @@ if ($this->confirm('Do you wish to continue?')) {
     // continue
 }
 ```
+
+
 **Writing output**
 
 ```
@@ -118,6 +120,8 @@ $rows    = [['First name', 'First email'], ['Second name', 'Second email']];
 
 $this->table($headers, $rows);
 ```
+
+
 
 ### Symfony block style
 
@@ -147,7 +151,7 @@ $bar->setFormat('%message%' . PHP_EOL . '%bar% %percent:3s% %' . PHP_EOL . 'time
 $bar->setBarCharacter('<info>'.$bar->getBarCharacter().'</info>');
 $bar->setBarWidth(80);
 
-foreach ($items as $i) {`
+foreach ($items as $i) {
     sleep(1);
     $bar->advance();
     $bar->setMessage("My bar, some progress... $i");
