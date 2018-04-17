@@ -129,7 +129,11 @@ $this->listing(['One','Two','Three'];
 $this->successBlock('Yeah!');
 $this->errorBlock('Oh no!');
 
-``
+// Custom blocks
+$this->block($messages, $type = null, $style = null, $prefix = ' ', $padding = true, $escape = true);
+
+```
+
 
 ### Symfony progress bar
 
