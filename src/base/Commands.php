@@ -2,6 +2,7 @@
 
 namespace ostark\Yii2ArtisanBridge\base;
 
+use Symfony\Component\Console\Formatter\OutputFormatterStyleInterface;
 use Yii;
 use yii\base\ActionEvent;
 use yii\console\Controller as BaseConsoleController;
@@ -21,6 +22,8 @@ class Commands extends BaseConsoleController
     public $options = [];
 
     public $optionAliases = [];
+
+    public $styles = [];
 
     /**
      * Commands constructor.
@@ -46,7 +49,6 @@ class Commands extends BaseConsoleController
             }
         });
     }
-
 
 
     /**
@@ -75,6 +77,17 @@ class Commands extends BaseConsoleController
     }
 
     /**
+     * @param string                                                             $prefix
+     * @param string                                                             $name
+     * @param \Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style
+     */
+    public static function setStyle(string $prefix, string $name, OutputFormatterStyleInterface $style)
+    {
+        Yii::$app->controllerMap[$prefix]['styles'][$name] = $style;
+    }
+
+
+    /**
      * @return array
      */
     public function actions()
@@ -84,7 +97,9 @@ class Commands extends BaseConsoleController
 
     public function optionAliases()
     {
-        return $this->optionAliases;
+        $defaultOptions = ['h' => 'help', 'i' => 'interactive'];
+
+        return array_merge($defaultOptions, $this->optionAliases);
     }
 
     /**
@@ -97,7 +112,7 @@ class Commands extends BaseConsoleController
         $actionOptions = [];
 
         foreach ($action->getProperties(\ReflectionProperty::IS_PUBLIC) as $property) {
-            if (in_array($property->getName(), array_values($this->optionAliases))) {
+            if (in_array($property->getName(), array_values($this->optionAliases()))) {
                 $actionOptions[] = $property->getName();
             }
         }
