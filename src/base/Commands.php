@@ -23,8 +23,6 @@ class Commands extends BaseConsoleController
 
     public $optionAliases = [];
 
-    public $styles = [];
-
     /**
      * Commands constructor.
      *
@@ -75,17 +73,6 @@ class Commands extends BaseConsoleController
     {
         Yii::$app->controllerMap[$prefix]['defaultAction'] = $name;
     }
-
-    /**
-     * @param string                                                             $prefix
-     * @param string                                                             $name
-     * @param \Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style
-     */
-    public static function setStyle(string $prefix, string $name, OutputFormatterStyleInterface $style)
-    {
-        Yii::$app->controllerMap[$prefix]['styles'][$name] = $style;
-    }
-
 
     /**
      * @return array

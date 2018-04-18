@@ -52,14 +52,7 @@ abstract class Action extends YiiBaseAction
         $this->input = new ArgvInput();
         $this->input->setInteractive($controller->interactive);
         $this->output = new OutputStyle($this->input, new ConsoleOutput());
-
-        // Additional styles registered?
-        if (count($controller->styles)) {
-           foreach ($controller->styles as $name => $style) {
-               $this->output->getFormatter()->setStyle($name, $style);
-           }
-        }
-
+        
     }
 
 }

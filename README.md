@@ -159,3 +159,23 @@ foreach ($items as $i) {
 
 $bar->finish();
 ```
+
+## Custom formatter
+
+Register a custom OutputFormatterStyle 
+```
+// in your init()
+\yii\base\Event::on(
+    Commands::class,
+    Commands::EVENT_BEFORE_ACTION,
+    function (ActionEvent $event) {
+        $style = new OutputFormatterStyle('white', 'cyan');
+        $event->action->output->getFormatter()->setStyle('ocean', $style);
+    }
+);
+```
+
+Apply the style
+```
+$this->title('Title in <ocean>blue</ocean>');
+```
