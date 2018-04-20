@@ -44,6 +44,10 @@ class Commands extends BaseConsoleController
                     }
                 }
             }
+
+            // Forward $interactive always
+            $event->action->interactive = $event->action->controller->interactive;
+
         });
     }
 
