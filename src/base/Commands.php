@@ -2,7 +2,6 @@
 
 namespace ostark\Yii2ArtisanBridge\base;
 
-use Symfony\Component\Console\Formatter\OutputFormatterStyleInterface;
 use Yii;
 use yii\base\ActionEvent;
 use yii\console\Controller as BaseConsoleController;
@@ -35,7 +34,7 @@ class Commands extends BaseConsoleController
         parent::__construct($id, $module, $config);
 
         // EVENT_BEFORE_ACTION
-        $this->on(self::class, self::EVENT_BEFORE_ACTION, function (ActionEvent $event) {
+        $this->on(self::EVENT_BEFORE_ACTION, function (ActionEvent $event) {
 
             // Forward options to Action
             foreach (array_values($this->optionAliases) as $name) {
