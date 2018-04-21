@@ -2,11 +2,11 @@
 
 namespace ostark\Yii2ArtisanBridge\base;
 
+use ostark\Yii2ArtisanBridge\ErrorHandler;
 use Yii;
 use yii\base\ActionEvent;
 use yii\console\Controller as BaseConsoleController;
 use yii\helpers\Inflector;
-
 
 /**
  * Copy Craft effortlessly
@@ -61,6 +61,11 @@ class Commands extends BaseConsoleController
      */
     public static function register(string $prefix, array $actions = [], array $options = [])
     {
+        $handler = new ErrorHandler();
+        $handler->register();
+
+        Yii::$app->set('errorHandler', $handler);
+
         Yii::$app->controllerMap[$prefix] = [
             'class'         => get_called_class(),
             'actions'       => $actions,
@@ -110,6 +115,7 @@ class Commands extends BaseConsoleController
         return $actionOptions;
 
     }
+
 
     /**
      * Options getter

@@ -1,7 +1,7 @@
 {
   "name": "ostark/yii2-artisan-bridge",
   "description": "Brings the ease of Artisan commands and the power of Symfony console to Yii2.",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "type": "library",
   "keywords": [
     "craftcms",
@@ -41,5 +41,4 @@
       "ostark\\Yii2ArtisanBridge\\": "src/"
     }
   }
-
 }

@@ -2,10 +2,7 @@
 
 namespace ostark\Yii2ArtisanBridge\base;
 
-use ostark\Yii2ArtisanBridge\ConsoleOutput;
-use ostark\Yii2ArtisanBridge\OutputStyle;
 use Symfony\Component\Console\Helper\Table;
-use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\Question;
 use yii\base\Arrayable;
