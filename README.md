@@ -15,6 +15,8 @@ composer require ostark/yii2-artisan-bridge
 
 use Craft;
 use craft\base\Plugin as BasePlugin;
+use ostark\Yii2ArtisanBridge\ActionGroup;
+use ostark\Yii2ArtisanBridge\Bridge;
 use you\PluginName\actions\ActionOne;
 use you\PluginName\actions\ActionTwo;
 
@@ -32,16 +34,23 @@ class Plugin extends BasePlugin
 
         if (Craft::$app instanceof \yii\console\Application) {
 
-            // Register console commands
-            Commands::register('prefix', [
+            $group = new ActionGroup('group-name', 'What this group is about.');
+            
+            $group->setActions([
                 'action1'  => ActionOne::class,
                 'action2'  => ActionTwo::class,
-            ], [
-                 'one' => 'option-one',
-                 'two' => 'option-two',
-                 'option-without-alias'
             ]);
-        
+            
+            $group->setDefaultAction('action1');
+
+            $group->setOptions([
+               'one' => 'option-one',
+               'two' => 'option-two',
+               'option-without-alias'
+            ]);
+            
+            Bridge::registerGroup($group);
+
     }
 }
 

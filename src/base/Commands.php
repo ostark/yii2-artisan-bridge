@@ -22,6 +22,8 @@ class Commands extends BaseConsoleController
 
     public $optionAliases = [];
 
+    public $helpSummary;
+
     /**
      * Commands constructor.
      *
@@ -52,8 +54,11 @@ class Commands extends BaseConsoleController
     }
 
 
+
     /**
      * Setup for actions and options
+     *
+     * @deprecated 1.2.0 No longer recommended, use Bridge::registerGroup() instead
      *
      * @param string $prefix
      * @param array  $actions
@@ -74,6 +79,8 @@ class Commands extends BaseConsoleController
     }
 
     /**
+     * @deprecated 1.2.0 No longer recommended, use ActionGroup::setDefaultAction() instead
+     *
      * @param string $prefix
      * @param string $name
      */
@@ -140,6 +147,10 @@ class Commands extends BaseConsoleController
         $this->options[$name] = $value;
     }
 
+    public function getHelpSummary()
+    {
+        return $this->helpSummary;
+    }
 
     /**
      * Returns the help information for the options for the action.
