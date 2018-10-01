@@ -21,43 +21,51 @@ class ActionGroup
         $this->helpSummary = $summary;
     }
 
-    public function setActions(array $actions = [])
+    public function setActions(array $actions = []): ActionGroup
     {
         $this->actions = $actions;
+
+        return $this;
     }
 
-    public function setOptions(array $options = [])
+    public function setOptions(array $options = []): ActionGroup
     {
         $this->optionAliases = $options;
+
+        return $this;
+
     }
 
 
-    public function setDefaultAction(string $name)
+    public function setDefaultAction(string $name): ActionGroup
     {
         if (!isset($this->getActions()[$name])) {
             throw new \InvalidArgumentException("Unknown action name '$name'");
         }
 
         $this->defaultAction = $name;
+
+        return $this;
+
     }
 
 
-    public function getActions() : array
+    public function getActions(): array
     {
         return $this->actions;
     }
 
-    public function getOptions() : array
+    public function getOptions(): array
     {
         return $this->optionAliases;
     }
 
-    public function getHelpSummary() : string
+    public function getHelpSummary(): string
     {
         return $this->helpSummary;
     }
 
-    public function getDefaultAction() : string
+    public function getDefaultAction(): string
     {
         return $this->defaultAction;
     }

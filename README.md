@@ -34,23 +34,20 @@ class Plugin extends BasePlugin
 
         if (Craft::$app instanceof \yii\console\Application) {
 
-            $group = new ActionGroup('group-name', 'What this group is about.');
-            
-            $group->setActions([
-                'action1'  => ActionOne::class,
-                'action2'  => ActionTwo::class,
-            ]);
-            
-            $group->setDefaultAction('action1');
-
-            $group->setOptions([
-               'one' => 'option-one',
-               'two' => 'option-two',
-               'option-without-alias'
-            ]);
+            $group = (new ActionGroup('group-name', 'What this group is about.'))
+                ->setActions([
+                    'action1'  => ActionOne::class,
+                    'action2'  => ActionTwo::class,
+                ])
+                ->setDefaultAction('action1')
+                ->setOptions([
+                    'one' => 'option-one',
+                    'two' => 'option-two',
+                    'option-without-alias'
+                ]);
             
             Bridge::registerGroup($group);
-
+        }
     }
 }
 
