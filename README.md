@@ -10,7 +10,7 @@ composer require ostark/yii2-artisan-bridge
 ```
 
 ### Configure actions for a Craft3 plugin
-```
+```php
 <?php namespace you\PluginName;
 
 use Craft;
@@ -61,7 +61,7 @@ You write one class per action. Your actual instructions live in the `run()` met
 Options and option aliases are registered in Commands::register($prefix, $actions, `$options`). To access an option, 
 it must be declared as a public property in the Action class. 
 
-```
+```php
 <?php namespace you\PluginName\actions;
 
 use Craft;
@@ -100,13 +100,15 @@ class ActionOne extends BaseAction {
 
 **Prompting for input**
 
-```
+```php
 $name = $this->ask('What is your name?', $default = null)`
 ```
-```
+
+```php
 $name = $this->anticipate('What is your name?', ['Taylor', 'Fabien', 'Brad', 'Brandon']);
 ```
-```
+
+```php
 if ($this->confirm('Do you wish to continue?')) {
     // continue
 }
@@ -115,12 +117,12 @@ if ($this->confirm('Do you wish to continue?')) {
 
 **Writing output**
 
-```
+```php
 $this->info('Display this on the screen');
 $this->error('Something went wrong!');
 ```
 
-```
+```php
 $headers = ['Name', 'Email'];
 $rows    = [['First name', 'First email'], ['Second name', 'Second email']];
 
@@ -131,7 +133,7 @@ $this->table($headers, $rows);
 
 ### Symfony block style
 
-```
+```php
 $this->title('Title style block');
 $this->section('Section style block');
 $this->listing(['One','Two','Three'];
@@ -147,7 +149,7 @@ $this->block($messages, $type = null, $style = null, $prefix = ' ', $padding = t
 
 ### Symfony progress bar
 
-```
+```php
 $items = range(1,10);
 
 $bar = $this->output->createProgressBar(count($items));
@@ -169,7 +171,7 @@ $bar->finish();
 ## Custom formatter
 
 Register a custom OutputFormatterStyle 
-```
+```php
 // in your init()
 \yii\base\Event::on(
     Commands::class,
@@ -182,6 +184,6 @@ Register a custom OutputFormatterStyle
 ```
 
 Apply the style
-```
+```php
 $this->title('Title in <ocean>blue</ocean>');
 ```
