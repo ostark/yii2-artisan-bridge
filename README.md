@@ -1,6 +1,6 @@
 # Yii2 Artisan Bridge
 
-This library brings the ease of Artisan commands and the power of Symfony console to Yii2 and Craft3.
+This library brings the ease of Artisan commands and the power of Symfony console to Yii2 and Craft 5.
 
 ## Install
 
@@ -9,7 +9,7 @@ Require the package:
 composer require ostark/yii2-artisan-bridge
 ```
 
-### Configure actions for a Craft3 plugin
+### Configure actions for a Craft 5 plugin
 ```php
 <?php namespace you\PluginName;
 
